@@ -17,7 +17,8 @@ jobs:
     runs-on: unbuntu-latest
     steps:
       - name: echo
-        run: echo "job3 failed"
+        run: |
+          echo "job3 failed"
           exit 1
   job4:
     runs-on: unbuntu-latest
