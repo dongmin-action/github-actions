@@ -1,0 +1,12 @@
+name: tag-filter
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]" ## # 1.0.0 or 2.2.2 OO 트리거 됨, V1.0 or 1.0.0 XXX 트리거 안됨
+
+jobs:
+  path-filter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo
+        run: echo hello
