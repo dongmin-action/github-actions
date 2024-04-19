@@ -1,4 +1,4 @@
-name: multiple-event-workflow
+name: multiple-event-workflow2
 on:
   push:
   issues:
