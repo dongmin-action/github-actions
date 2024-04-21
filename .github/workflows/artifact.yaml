@@ -6,12 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo
-        run: echo hello-world > hello.txt
+        run: echo hihihihi dongmin37 > dm37.txt
       - name: upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: artifact-test
-          path: ./hello.txt
+          path: ./dm37.txt
   download-artifact:
     runs-on: ubuntu-latest
     needs: [upload-artifact]
@@ -22,4 +22,4 @@ jobs:
           name: artifact-test
           path: ./
       - name: check
-        run: cat hello.txt
+        run: cat dm37.txt
