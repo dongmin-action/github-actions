@@ -4,6 +4,8 @@ on: push
 jobs:
   create-output:
     runs-on: ubuntu-latest
+    outputs:
+      test: ${{ steps.make-output.outputs.test }}
     steps:
       - name: echo output
         id: make-output
@@ -12,3 +14,10 @@ jobs:
       - name: check output
         run: |
           echo ${{ steps.make-output.outputs.test }}
+
+  get-output:
+    needs: [create-output]
+    runs-on: ubuntu-latest
+    steps:
+      - name: get output
+        run: echo ${{ needs.create-output.outputs.test }}
