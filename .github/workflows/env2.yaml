@@ -1,0 +1,14 @@
+name: env-2
+on: push
+
+env:
+  level: workflow
+
+jobs:
+  get-var:
+    runs-on: ubuntu-latest
+    steps:
+      - name: create env
+        run: echo "level=job" >> $GITHUB_ENV
+      - name: check env
+        run: echo "LECEL ${{ env.level}}"
