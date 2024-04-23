@@ -18,7 +18,7 @@ jobs:
           keywords=$(cat keyword-list.txt) 
             for keyword in $keywords; do
               if [[ "${{ github.event.issue.title }}" =~ "$keyword" ]]; then
-              echo level=$keyword »> $GITHUB_OUTPUT
+              echo level=$keyword >> $GITHUB_OUTPUT
               fi 
           done
       - name: get output
@@ -41,7 +41,7 @@ jobs:
                 "color": "28a745",
                 "fields": [
                   {
-                  "title": "noti normal issue ${{ needs.get-keyword.outputs.level }}",
+                  "title": "Level: ${{ needs.get-keyword.outputs.level }}",
                   "short": true,
                   "value": "issue url : ${{ github.event.issue.html_url }}"
                   }
