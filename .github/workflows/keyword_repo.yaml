@@ -1,0 +1,55 @@
+name: issue-workflow1
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  issue-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: normal-noti
+        if: contains( github.event.issue.title , 'normal')
+        uses: slackapi/slack-github-action@v1.26.0
+        with:
+          payload: |
+            {
+            "attachments": [
+              {
+                "pretext": "push normal-issue",
+                "color": "28a745",
+                "fields": [
+                  {
+                  "title": "noti normal issue ${{ steps.create-repo.outcome }}",
+                  "short": true,
+                  "value": "${{ inputs.prefix }}-${{ inputs.name }}"
+                  }
+                ]
+               }
+            ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_NORMAL_ISSUE }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+      - name: critical-noti
+        if: contains( github.event.issue.title , 'critical')
+        uses: slackapi/slack-github-action@v1.26.0
+        with:
+          payload: |
+            {
+            "attachments": [
+              {
+                "pretext": "push critical-issue",
+                "color": "28a745",
+                "fields": [
+                  {
+                  "title": "noti critical issue ${{ steps.create-repo.outcome }}",
+                  "short": true,
+                  "value": "${{ inputs.prefix }}-${{ inputs.name }}"
+                  }
+                ]
+               }
+            ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_CRITICAL_ISSUE }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
