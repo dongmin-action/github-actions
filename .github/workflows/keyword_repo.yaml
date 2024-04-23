@@ -7,8 +7,8 @@ jobs:
   issue-job:
     runs-on: ubuntu-latest
     steps:
-      - name: normal-noti
-        id: normal-noti
+      - name: normal-notification
+        id: normal-notification
         if: contains( github.event.issue.title , 'normal')
         uses: slackapi/slack-github-action@v1.26.0
         with:
@@ -20,7 +20,7 @@ jobs:
                 "color": "28a745",
                 "fields": [
                   {
-                  "title": "noti normal issue ${{ steps.normal-noti.outcome }}",
+                  "title": "noti normal issue ${{ steps.normal-notification.outcome }}",
                   "short": true,
                   "value": "${{ github.event.issue.body }}"
                   }
@@ -31,8 +31,8 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_NORMAL_ISSUE }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
-      - name: critical-noti
-        id: normal-noti
+      - name: critical-notification
+        id: critical-notification
         if: contains( github.event.issue.title , 'critical')
         uses: slackapi/slack-github-action@v1.26.0
         with:
@@ -44,7 +44,7 @@ jobs:
                 "color": "28a745",
                 "fields": [
                   {
-                  "title": "noti critical issue ${{ steps.critical-noti.outcome }}",
+                  "title": "noti critical issue ${{ steps.critical-notification.outcome }}",
                   "short": true,
                   "value": "${{ github.event.issue.body }}"
                   }
