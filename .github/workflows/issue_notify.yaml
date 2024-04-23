@@ -28,11 +28,11 @@ jobs:
       needs: [get-keyword]
       if: needs.get-keyword.outputs.level != 'Undefined'
       runs-on: ubuntu-latest
-      environment: ${{ needs.get-keyword.outputs.level }} 
+      environment: ${{ needs.get-keyword.outputs.level }}
       steps:
-      - name: slack
-        uses: slackapi/slack-github-action@v1.24.0 
-        with:
+        - name: slack
+          uses: slackapi/slack-github-action@v1.24.0
+          with:
             payload: |
               {
               "attachments": [
@@ -52,4 +52,3 @@ jobs:
           env:
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
             SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
-  
