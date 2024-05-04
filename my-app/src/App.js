@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          예슬짱사랑
+          예슬짱사랑 real
         </a>
       </header>
     </div>
