@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn GithubAction ci1/cd2-awstest
+          예슬짱
         </a>
       </header>
     </div>
